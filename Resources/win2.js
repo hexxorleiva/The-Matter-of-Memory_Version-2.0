@@ -206,7 +206,7 @@ var lostServer = Ti.UI.createAlertDialog({
 var mapView = Titanium.Map.createView({
 	mapType: Titanium.Map.STANDARD_TYPE,
     animate:true,
-    regionFit: false,
+    regionFit: true,
     userLocation:true
 });
 
@@ -237,6 +237,8 @@ function gpsCallback(_coords){
 	mapView.setLocation({
 	latitude: _coords.latitude,
 	longitude: _coords.longitude,
+	//The latitude and longitude deltas below indicate the zooming in on the initial map creation in the app. This is a good zoom-in to indicate where you are in not have to zoom in too much.
+	latitudeDelta:0.01, longitudeDelta:0.01,
 	animate: true
 	});
 
