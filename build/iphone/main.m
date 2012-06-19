@@ -7,14 +7,14 @@
 #define _QUOTEME(x) #x
 #define STRING(x) _QUOTEME(x)
 
-NSString * const TI_APPLICATION_DEPLOYTYPE = @"development";
+NSString * const TI_APPLICATION_DEPLOYTYPE = @"production";
 NSString * const TI_APPLICATION_ID = @"com.hectorleiva.matterofmemory";
 NSString * const TI_APPLICATION_PUBLISHER = @"chrono22031";
 NSString * const TI_APPLICATION_URL = @"http://hectorleiva.com";
 NSString * const TI_APPLICATION_NAME = @"The Matter of Memory_Version-2.0";
 NSString * const TI_APPLICATION_VERSION = @"1.0";
 NSString * const TI_APPLICATION_DESCRIPTION = @"not specified";
-NSString * const TI_APPLICATION_COPYRIGHT = @"2012 by chrono22031";
+NSString * const TI_APPLICATION_COPYRIGHT = @"2012 by Hector Leiva";
 NSString * const TI_APPLICATION_GUID = @"3f51ea7d-6fc4-4c17-9193-0e0263c5b894";
 BOOL const TI_APPLICATION_ANALYTICS = true;
 

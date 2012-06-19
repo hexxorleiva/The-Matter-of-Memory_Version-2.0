@@ -10,6 +10,8 @@
 win2.backgroundColor = 'black';
 Ti.include('currentLocation.js');
 
+Titanium.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_PLAY_AND_RECORD;
+
 /*
 Ti.App.addEventListener('current.position', function(coords){
 	Ti.API.info('from Global eventlistener & current position longitude: ' + JSON.stringify(coords.longitude));

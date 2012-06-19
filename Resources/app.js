@@ -4,8 +4,6 @@ Titanium.UI.setBackgroundColor('#000');
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
 
-Titanium.Media.AUDIO_SESSION_MODE_PLAY_AND_RECORD
-
 
 //
 // create base UI tab and root window
