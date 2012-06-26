@@ -46,8 +46,8 @@ var activityIndicator = Ti.UI.createActivityIndicator({
   font: {fontFamily:'Helvetica Neue', fontSize:20, fontWeight:'normal'},
   message: 'Loading...',
   style:Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN,
-  top:'auto',
-  left:'auto',
+  top:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
+  left:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
   height:'auto',
   width:'auto'
 });
