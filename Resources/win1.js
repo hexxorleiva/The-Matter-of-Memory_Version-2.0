@@ -36,7 +36,7 @@ var subLabel1 = Titanium.UI.createLabel({
 	color:'#999',
 	font:{fontSize:14,fontfamily:'Helvetica Neue'},
 	textAlign:'left',
-	width: '90%',
+	width: 300,
 	height:'auto',
 	top: 100
 });
@@ -47,7 +47,7 @@ var subLabel2 = Ti.UI.createLabel({
 	color:'#999',
 	font:{fontSize:14,fontfamily:'Helvetica Neue'},
 	textAlign:'left',
-	width: '90%',
+	width: 300,
 	height:'auto',
 	top: 200
 })
