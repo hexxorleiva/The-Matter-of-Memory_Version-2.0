@@ -10,14 +10,14 @@
         <target device="mobileweb">false</target>
         <target device="iphone">true</target>
         <target device="ipad">true</target>
-        <target device="android">true</target>
+        <target device="android">false</target>
         <target device="blackberry">false</target>
     </deployment-targets>
     <sdk-version>2.0.2.GA</sdk-version>
     <id>com.hectorleiva.matterofmemory</id>
     <name>The Matter of Memory_Version-2.0</name>
-    <version>1.0</version>
-    <publisher>chrono22031</publisher>
+    <version>2.0</version>
+    <publisher>Hector Leiva</publisher>
     <url>http://hectorleiva.com</url>
     <description>not specified</description>
     <copyright>2012 by Hector Leiva</copyright>
