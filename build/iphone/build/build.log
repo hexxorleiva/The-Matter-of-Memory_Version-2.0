@@ -5,7 +5,7 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 07/02/12 16:08
+Starting build at 07/03/12 14:06
 
 Build details:
 
@@ -27,7 +27,7 @@ Script arguments:
    
 
 Building from: /Users/chrono22031/Library/Application Support/Titanium/mobilesdk/osx/2.0.2.GA/iphone
-Platform: Darwin Kernel Version 11.2.0: Tue Aug  9 20:54:00 PDT 2011; root:xnu-1699.24.8~1/RELEASE_X86_64
+Platform: Darwin Kernel Version 11.4.0: Mon Apr  9 19:32:15 PDT 2012; root:xnu-1699.26.8~1/RELEASE_X86_64
 
 Xcode path is: /Developer
 

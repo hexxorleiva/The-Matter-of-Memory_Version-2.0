@@ -10,7 +10,7 @@
 win2.backgroundColor = 'black';
 Ti.include('currentLocation.js');
 
-Titanium.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_PLAY_AND_RECORD;
+Titanium.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_PLAYBACK;
 
 /*
 Ti.App.addEventListener('current.position', function(coords){
