@@ -25,7 +25,7 @@ win3.setTitleControl(titleLabel);
 
 //	To affect where the POST operation for the PHP page will be executed, change the URL here.
 //	was "http://thematterofmemory.com/thematterofmemory_scripts/uploadaudio.php"
-var posturl="http://thematterofmemory.com/S3_scripts/S3_uploadaudio.php";
+var posturl="http://thematterofmemory.com/masterAudioDirectory/S3_audio_upload.php";
 
 //Creation of a new Directory to store both GPS and audio files. Will check if directory exists.
 var newDir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'mydir');

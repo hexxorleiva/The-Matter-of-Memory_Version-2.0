@@ -85,7 +85,10 @@ var easyClock = [];
 var audioURL = [];
 var miniMapLatitude = [];
 var miniMapLongitude = [];
-var streamPlayerurl = 'http://thematterofmemory.com/S3_scripts/';
+//var streamPlayerurl = 'http://thematterofmemory.com/S3_scripts/';
+
+//The streamPlayerURL has been taken out in order to make way to the Amazon S3 URLs that will be provided back from the response from the database that contains those locations.
+
 var url = "http://thematterofmemory.com";
 
 // Button so user manually refreshes the map for memory locations
@@ -260,7 +263,7 @@ function removeAnnotations(){
 function gpsAnnotations(_coords){
 
 	removeAnnotations();
-	var geturl="http://thematterofmemory.com/S3_scripts/memorymappingcoordinates.php?latitude=" + _coords.latitude + "&longitude=" + _coords.longitude;
+	var geturl="http://thematterofmemory.com/masterGPSCoordinatesDirectory/memorymappingcoordinates.php?latitude=" + _coords.latitude + "&longitude=" + _coords.longitude;
 	Titanium.API.info('Region Changed: ' + geturl);
 	
 	var xhr = Titanium.Network.createHTTPClient();
@@ -331,7 +334,7 @@ mapView.addEventListener('click', function(e) {
 		clockLabel.text = e.annotation.easyClock;
 
 		//	Create Stream Player
-		sound.url = streamPlayerurl + e.annotation.audioURL;
+		sound.url = e.annotation.audioURL;
     
     	detail_win2.setToolbar([playButton,flexSpace,pauseButton,flexSpace,rewindButton], {translucent:true});
 
