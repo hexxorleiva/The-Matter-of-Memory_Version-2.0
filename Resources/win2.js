@@ -10,8 +10,6 @@
 win2.backgroundColor = 'black';
 Ti.include('currentLocation.js');
 
-Titanium.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_PLAYBACK;
-
 /*
 Ti.App.addEventListener('current.position', function(coords){
 	Ti.API.info('from Global eventlistener & current position longitude: ' + JSON.stringify(coords.longitude));
@@ -106,7 +104,7 @@ var searchButton = Titanium.UI.createButtonBar({
 var sound = Titanium.Media.createAudioPlayer({
 	//url: url,
 	allowBackground: true,
-	preload:false
+	preload:true
 });
 
 	
