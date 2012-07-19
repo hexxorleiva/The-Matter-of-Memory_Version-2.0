@@ -10,14 +10,8 @@
 win2.backgroundColor = 'black';
 Ti.include('currentLocation.js');
 
-/*
-Ti.App.addEventListener('current.position', function(coords){
-	Ti.API.info('from Global eventlistener & current position longitude: ' + JSON.stringify(coords.longitude));
-	Ti.API.info('from Global eventListener & current position latitude : ' + JSON.stringify(coords.latitude));
-	var currentLatitude = JSON.stringify(coords.latitude);
-	var currentLongitude = JSON.stringify(coords.longitude);
-});
-*/
+var currentLatitude;
+var currentLongitude;
 
 var detail_win2 = Titanium.UI.createWindow({
 	title:'Map View', 
@@ -48,6 +42,17 @@ var activityIndicator = Ti.UI.createActivityIndicator({
   left:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
   height:'auto',
   width:'auto'
+});
+
+//	Timeout Alerts
+var lostSignal = Ti.UI.createAlertDialog({
+		title:'Connection Lost',
+		message:'Check to see that you have a phone signal or Wi-Fi connection.'
+});
+
+var lostServer = Ti.UI.createAlertDialog({
+		title:'Timed Out',
+		message:'There was an issue connecting to the server, please wait and try again.'
 });
 
 detail_win2.add(activityIndicator);
@@ -91,13 +96,14 @@ var url = "http://thematterofmemory.com";
 
 // Button so user manually refreshes the map for memory locations
 
-/*
-var searchButton = Titanium.UI.createButtonBar({
-	labels:['Search this area for memory locations'],
-	backgroundColor:'#666',
-	width:250
-});
-*/
+//	Reload Button
+var reloadButton;
+
+reloadButton = Titanium.UI.createButton({
+	systemButton:Titanium.UI.iPhone.SystemButton.REFRESH,
+	right:50
+	});
+win2.setRightNavButton(reloadButton);
 
 // Create audio streaming player
 // load from remote url
@@ -261,6 +267,10 @@ function removeAnnotations(){
 function gpsAnnotations(_coords){
 
 	removeAnnotations();
+
+	currentLatitude = _coords.latitude;
+	currentLongitude = _coords.longitude;
+	
 	var geturl="http://thematterofmemory.com/masterGPSCoordinatesDirectory/memorymappingcoordinates.php?latitude=" + _coords.latitude + "&longitude=" + _coords.longitude;
 	Titanium.API.info('Region Changed: ' + geturl);
 	
@@ -318,6 +328,82 @@ function gpsAnnotations(_coords){
 	xhr.send();
 
 };
+
+
+var region_changing = function reloadGPSAnnotations(){	
+	
+	//	Create view that will block out the other Table options
+	var view = Titanium.UI.createView({
+		backgroundColor:'black',
+		width: 320,
+		height: 460,
+		opacity: 0.9
+		});
+	win2.add(view);
+
+	win2.add(activityIndicator);
+	activityIndicator.show();
+	//	Remove any previously set up annotations
+	removeAnnotations();
+	//	Contact server
+	var geturl="http://thematterofmemory.com/masterGPSCoordinatesDirectory/memorymappingcoordinates.php?latitude=" + currentLatitude + "&longitude=" + currentLongitude;
+	Titanium.API.info('Region Changed: ' + geturl);
+
+	var xhr = Titanium.Network.createHTTPClient();
+	xhr.open('GET', geturl, false);
+	xhr.onerror = function()
+		{
+			win2.remove(actInd);
+			activityIndicator.hide();
+			win2.remove(view);
+
+			setTimeout(function(){
+				lostSignal.show();
+			},3000);
+
+		Titanium.API.info('IN ERROR' + e.error);
+		return;
+		}
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//	Upon getting a server response, the function will make that response equal to an array and run through the array until the response is empty.	 //
+	//	For each latitude and longitude value that is returned from the server, they will be a latitude and longitude value to set for the annotations.	 //
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	xhr.onload = function(){
+		win2.remove(activityIndicator);
+		activityIndicator.hide();
+		win2.remove(view);
+	Titanium.API.info('From win2.js & The Matter of Memory.com: ' + this.responseText);
+	incomingData = JSON.parse(this.responseText);
+	for (var i = 0; i < incomingData.length; i++){
+	recorded = incomingData[i];
+		plotPoints = Titanium.Map.createAnnotation({
+		latitude: recorded.Latitude,
+		longitude: recorded.Longitude,
+		miniMapLatitude: recorded.Latitude,
+		miniMapLongitude: recorded.Longitude,
+		title: 'Memory',
+		subtitle: 'Click to listen',
+		date: recorded.easytime,
+		easyClock: recorded.easyclock,
+		audioURL: recorded.AudioURL,
+		rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE,
+		animate:true
+		});
+		
+	plotPoints.pincolor = Titanium.Map.ANNOTATION_GREEN;
+	
+	//mapView.addAnnotation(plotPointsFarther);
+	mapView.addAnnotation(plotPoints);
+	
+	//annotations.push(plotPointsFarther);
+	annotations.push(plotPoints);
+		}; // end of for loop
+	}; // end of xhr.onload()
+
+	xhr.send();
+	};
+
+reloadButton.addEventListener('click', region_changing);
 
 mapView.addEventListener('click', function(e) {
     if (e.clicksource == 'rightButton') {
