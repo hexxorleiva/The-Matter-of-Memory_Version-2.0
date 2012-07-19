@@ -34,14 +34,14 @@ win2.setTitleControl(titleLabel);
 
 //	Activity Indicator
 var activityIndicator = Ti.UI.createActivityIndicator({
-  color: 'white',
-  font: {fontFamily:'Helvetica Neue', fontSize:20, fontWeight:'normal'},
-  message: 'Loading...',
-  style:Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN,
-  top:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
-  left:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
-  height:'auto',
-  width:'auto'
+	color: 'white',
+	font: {fontFamily:'Helvetica Neue', fontSize:20, fontWeight:'normal'},
+	message: 'Loading...',
+	style:Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN,
+	top:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
+	left:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
+	height:'auto',
+	width:'auto'
 });
 
 //	Timeout Alerts
@@ -107,11 +107,15 @@ win2.setRightNavButton(reloadButton);
 
 // Create audio streaming player
 // load from remote url
+var annotationURL;
+var sound = Titanium.Media.createSound({url:annotationURL});
+
+/*
 var sound = Titanium.Media.createAudioPlayer({
-	//url: url,
 	allowBackground: true,
 	preload:true
 });
+*/
 
 	
 var positionLeft = 10;
@@ -154,15 +158,11 @@ var playButton = Titanium.UI.createButton({
 	left:30,
 	enabled:true
 	});
-playButton.addEventListener('click', function()
-{
-	sound.start(); //sound.play();
-
-});
 
 //
 //	PAUSE
 //
+
 var pauseButton = Titanium.UI.createButton({
 	systemButton:Titanium.UI.iPhone.SystemButton.PAUSE,
 	enabled:true
@@ -172,6 +172,7 @@ pauseButton.addEventListener('click', function()
 	sound.pause();
 });
 
+
 //
 //	REWIND
 //
@@ -180,25 +181,9 @@ var rewindButton = Titanium.UI.createButton({
 	left:50,
 	enabled:true
 });
-rewindButton.addEventListener('click', function()
-{
-	sound.stop();
-});
 
 var flexSpace = Titanium.UI.createButton({
 	systemButton:Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
-});
-
-//
-//	SOUND EVENTS
-//
-sound.addEventListener('complete', function()
-{
-	Titanium.API.info('COMPLETE CALLED');
-});
-sound.addEventListener('resume', function()
-{
-	Titanium.API.info('RESUME CALLED');
 });
 
 //	Alerts
@@ -407,7 +392,17 @@ reloadButton.addEventListener('click', region_changing);
 
 mapView.addEventListener('click', function(e) {
     if (e.clicksource == 'rightButton') {
-
+		//	Loading Screen
+		var detailView = Titanium.UI.createView({
+			backgroundColor:'black',
+			width: '70%',
+			height: '20%',
+			opacity: 0.8
+			});
+		win2.add(detailView);
+		
+		win2.add(activityIndicator);
+		activityIndicator.show();
 	//If there is sound playing from the memory you just recorded and are about to listen to a recording someone else made - let us stop your playback.
 	//	if (sound_01 != null) {
 	//		sound_01.stop();
@@ -416,11 +411,24 @@ mapView.addEventListener('click', function(e) {
 		//within the 'dateLabel'. It will be replaced everytime without overlap.
 		dateLabel.text = e.annotation.date;
 		clockLabel.text = e.annotation.easyClock;
-
+		annotationURL = e.annotation.audioURL;
 		//	Create Stream Player
-		sound.url = e.annotation.audioURL;
-    
-    	detail_win2.setToolbar([playButton,flexSpace,pauseButton,flexSpace,rewindButton], {translucent:true});
+		//	sound.url = e.annotation.audioURL;
+		
+		// load from remote url
+		sound = Titanium.Media.createSound({url:annotationURL});
+    	
+    	//	Create Progress Bar
+    	var pb = Titanium.UI.createProgressBar({
+			min:0,
+			value:0,
+			width:200
+			});
+		//	Show Progress Bar
+		pb.show();
+		
+		//	Adding all of these elements together at the bottom of the screen above the main buttons
+    	detail_win2.setToolbar([playButton,flexSpace,pb,flexSpace,rewindButton], {translucent:true});
 
 		var miniPlotPoints = Titanium.Map.createAnnotation({
 		latitude: e.annotation.latitude,
@@ -448,17 +456,56 @@ mapView.addEventListener('click', function(e) {
 		detail_win2.add(mapMiniView);
 
 		tabGroup.activeTab.open(detail_win2,{animated:true})
-		sound.start();
-	//	} // else
-   } //	if
-}); //	if mapView right_click has been hit.
-
-detail_win2.addEventListener('close', function()
-{
-	sound.stop();
-	Ti.API.info('detail_win2 has closed.');
-});
+		/*sound.start();*/
+		sound.play();
+		pb.max = sound.duration;
 		
+		if (sound.isPlaying){
+			// If sound is playing, remove loading screen
+			win2.remove(detailView);
+    		activityIndicator.hide();
+		}
+		
+		//
+// If sound is playing, update the value of the progress bar by checking every 500ms
+var i = setInterval(function()
+{
+	if (sound.isPlaying())
+	{
+		Ti.API.info('time ' + sound.time);
+		pb.value = sound.time;
+	}
+},500);
+
+/*
+ * 	Button Events
+ */
+
+playButton.addEventListener('click', function()
+{
+	/*sound.start(); */
+	sound.play();
+	pb.max = sound.duration;
+
+});
+
+rewindButton.addEventListener('click', function()
+{
+	/*sound.stop();*/
+	sound.reset();
+	pb.value = 0;
+});
+
+//
+// SOUND EVENTS
+//
+
+sound.addEventListener('complete', function()
+{
+	Titanium.API.info('COMPLETE CALLED');
+	pb.value = 0;
+});
+
 sound.addEventListener('change',function(e)
 {
     Ti.API.info('State: ' + e.description + ' (' + e.state + ')');
@@ -475,7 +522,24 @@ sound.addEventListener('change',function(e)
     }
 });
 
-//searchButton.addEventListener('click', );
+
+sound.addEventListener('resume', function()
+{
+	Titanium.API.info('RESUME CALLED');
+});
+
+detail_win2.addEventListener('close', function()
+{
+	sound.stop();
+	clearInterval(i);
+	Ti.API.info('detail_win2 has closed. Sound has stopped and the progress bar value should be 0.');
+});
+
+
+
+	//	} // else
+   } //	if
+}); //	if mapView right_click has been hit.
 
 win2.add(mapView);
 //win2.setToolbar([flexSpace,searchButton,flexSpace]);
