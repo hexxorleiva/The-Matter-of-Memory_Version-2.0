@@ -112,15 +112,15 @@ var my_timer = new countDown(2,00,
 
 var display_lbl =  Titanium.UI.createLabel({
 	text:"2 : 00",
-	height:80,
-	width:320,
-	top:100,
-	left:0,
+	height:50,
+	width:240,
+	top:60,
+	left:40,
 	color:'#fff',
 	borderRadius:10,
-	backgroundColor:'#000',
+	backgroundColor:'#333',
 	font:{
-		fontSize:70,
+		fontSize:60,
 		fontWeight:'bold'
 	},
 	textAlign:'center'
@@ -315,7 +315,7 @@ win3.add(describeText);
 
 var describeTextModal = Titanium.UI.createLabel({
 	text: 'Why is this place important to you?',
-	top:180,
+	top:200,
 	width:300,
 	textAlign:'center',
 	font:{fontSize:18,fontfamily:'Helvetica Neue'},
@@ -400,12 +400,22 @@ win3.add(submitText);
 //
 //	Label: Warning about Time Limit - Modal Window
 //
-var timeLimitModal = Titanium.UI.createLabel({
-	text: 'There is a limit of 2 minutes for recording time.',
-	bottom:50,
-	width:300,
+//var timeLimitModal = Titanium.UI.createLabel({
+//	text: 'There is a limit of 2 minutes for recording time.',
+//	bottom:50,
+//	width:300,
+//	textAlign:'center',
+//	font:{fontSize:12,fontfamily:'Helvetica Neue',fontWeight:'bold'},
+//	height:'auto',
+//	color:'#fff'
+//});
+
+var timeRemaining = Titanium.UI.createLabel({
+	text: 'Time Remaining',
+	top:115,
+	width:200,
 	textAlign:'center',
-	font:{fontSize:12,fontfamily:'Helvetica Neue',fontWeight:'bold'},
+	font:{fontSize:19,fontfamily:'Helvetica Neue',fontWeight:'normal'},
 	height:'auto',
 	color:'#fff'
 });
@@ -449,7 +459,8 @@ record.addEventListener('click', function(){
 		});
 	modal.setRightNavButton(done);
 	modal.add(describeTextModal);
-	modal.add(timeLimitModal);
+	//modal.add(timeLimitModal);
+	modal.add(timeRemaining);
 	//Setting up timer
 	my_timer.set(2,00);
 	my_timer.start();

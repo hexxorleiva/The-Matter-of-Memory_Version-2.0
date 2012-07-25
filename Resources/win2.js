@@ -395,9 +395,10 @@ mapView.addEventListener('click', function(e) {
 		//	Loading Screen
 		var detailView = Titanium.UI.createView({
 			backgroundColor:'black',
-			width: '70%',
-			height: '20%',
-			opacity: 0.8
+			width: 160,
+			height: 40,
+			opacity: 0.6,
+			borderRadius: 10,
 			});
 		win2.add(detailView);
 		
