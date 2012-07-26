@@ -107,15 +107,10 @@ win2.setRightNavButton(reloadButton);
 
 // Create audio streaming player
 // load from remote url
-var annotationURL;
-var sound = Titanium.Media.createSound({url:annotationURL});
-
-/*
 var sound = Titanium.Media.createAudioPlayer({
 	allowBackground: true,
 	preload:true
 });
-*/
 
 	
 var positionLeft = 10;
@@ -159,6 +154,11 @@ var playButton = Titanium.UI.createButton({
 	enabled:true
 	});
 
+playButton.addEventListener('click', function()
+{
+	sound.start();
+});
+
 //
 //	PAUSE
 //
@@ -180,6 +180,12 @@ var rewindButton = Titanium.UI.createButton({
 	systemButton:Titanium.UI.iPhone.SystemButton.REWIND,
 	left:50,
 	enabled:true
+});
+
+rewindButton.addEventListener('click', function()
+{
+	sound.stop();
+	sound.start();
 });
 
 var flexSpace = Titanium.UI.createButton({
@@ -320,8 +326,8 @@ var region_changing = function reloadGPSAnnotations(){
 	//	Create view that will block out the other Table options
 	var view = Titanium.UI.createView({
 		backgroundColor:'black',
-		width: 320,
-		height: 460,
+		width: '100%',
+		height: '100%',
 		opacity: 0.9
 		});
 	win2.add(view);
@@ -392,18 +398,7 @@ reloadButton.addEventListener('click', region_changing);
 
 mapView.addEventListener('click', function(e) {
     if (e.clicksource == 'rightButton') {
-		//	Loading Screen
-		var detailView = Titanium.UI.createView({
-			backgroundColor:'black',
-			width: 160,
-			height: 40,
-			opacity: 0.6,
-			borderRadius: 10,
-			});
-		win2.add(detailView);
-		
-		win2.add(activityIndicator);
-		activityIndicator.show();
+
 	//If there is sound playing from the memory you just recorded and are about to listen to a recording someone else made - let us stop your playback.
 	//	if (sound_01 != null) {
 	//		sound_01.stop();
@@ -413,23 +408,12 @@ mapView.addEventListener('click', function(e) {
 		dateLabel.text = e.annotation.date;
 		clockLabel.text = e.annotation.easyClock;
 		annotationURL = e.annotation.audioURL;
-		//	Create Stream Player
-		//	sound.url = e.annotation.audioURL;
 		
-		// load from remote url
-		sound = Titanium.Media.createSound({url:annotationURL});
-    	
-    	//	Create Progress Bar
-    	var pb = Titanium.UI.createProgressBar({
-			min:0,
-			value:0,
-			width:200
-			});
-		//	Show Progress Bar
-		pb.show();
+		//	Create Stream Player
+		sound.url = e.annotation.audioURL;
 		
 		//	Adding all of these elements together at the bottom of the screen above the main buttons
-    	detail_win2.setToolbar([playButton,flexSpace,pb,flexSpace,rewindButton], {translucent:true});
+    	detail_win2.setToolbar([playButton,flexSpace,pauseButton,flexSpace,rewindButton], {translucent:true});
 
 		var miniPlotPoints = Titanium.Map.createAnnotation({
 		latitude: e.annotation.latitude,
@@ -457,45 +441,9 @@ mapView.addEventListener('click', function(e) {
 		detail_win2.add(mapMiniView);
 
 		tabGroup.activeTab.open(detail_win2,{animated:true})
-		/*sound.start();*/
-		sound.play();
-		pb.max = sound.duration;
-		
-		if (sound.isPlaying){
-			// If sound is playing, remove loading screen
-			win2.remove(detailView);
-    		activityIndicator.hide();
-		}
-		
-		//
-// If sound is playing, update the value of the progress bar by checking every 500ms
-var i = setInterval(function()
-{
-	if (sound.isPlaying())
-	{
-		Ti.API.info('time ' + sound.time);
-		pb.value = sound.time;
+		sound.start();
 	}
-},500);
-
-/*
- * 	Button Events
- */
-
-playButton.addEventListener('click', function()
-{
-	/*sound.start(); */
-	sound.play();
-	pb.max = sound.duration;
-
-});
-
-rewindButton.addEventListener('click', function()
-{
-	/*sound.stop();*/
-	sound.reset();
-	pb.value = 0;
-});
+	});
 
 //
 // SOUND EVENTS
@@ -504,7 +452,6 @@ rewindButton.addEventListener('click', function()
 sound.addEventListener('complete', function()
 {
 	Titanium.API.info('COMPLETE CALLED');
-	pb.value = 0;
 });
 
 sound.addEventListener('change',function(e)
@@ -532,15 +479,8 @@ sound.addEventListener('resume', function()
 detail_win2.addEventListener('close', function()
 {
 	sound.stop();
-	clearInterval(i);
 	Ti.API.info('detail_win2 has closed. Sound has stopped and the progress bar value should be 0.');
 });
-
-
-
-	//	} // else
-   } //	if
-}); //	if mapView right_click has been hit.
 
 win2.add(mapView);
 //win2.setToolbar([flexSpace,searchButton,flexSpace]);

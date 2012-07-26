@@ -103,11 +103,13 @@ var my_timer = new countDown(2,00,
 		function() {
 			display_lbl.text = my_timer.time.m+" : "+my_timer.time.s;
 		},
-		function() {
+		function (){
+			if (my_timer.time.m == 0 && my_timer.time.s == 0) {
 			alert("The time is up!");
 			modal.close();
 			stopRecording();
-		}
+			}
+		} 
 	);
 
 var display_lbl =  Titanium.UI.createLabel({
