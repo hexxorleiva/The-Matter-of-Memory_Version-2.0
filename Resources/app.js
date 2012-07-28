@@ -27,7 +27,7 @@ var win2 = Titanium.UI.createWindow({
     barColor: '#999999'
 });
 var tab2 = Titanium.UI.createTab({  
-    icon:'KS_nav_ui.png',
+    icon:'map_icon-thumbnail.png',
     title:'Map',
     window:win2
 });

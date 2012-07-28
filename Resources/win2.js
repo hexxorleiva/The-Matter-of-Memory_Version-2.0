@@ -67,7 +67,7 @@ var view = Titanium.UI.createView({
 	iseeyou: false
 });
 
-detail_win2.add(view);
+//detail_win2.add(view);
 
 //
 //	Globally Declared Variables
