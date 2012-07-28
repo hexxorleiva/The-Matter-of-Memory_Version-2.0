@@ -51,6 +51,7 @@ dependencies: \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiApp.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiHost.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiStylesheet.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/XHRBridge.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiRootViewController.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiRootController.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiTabController.h \

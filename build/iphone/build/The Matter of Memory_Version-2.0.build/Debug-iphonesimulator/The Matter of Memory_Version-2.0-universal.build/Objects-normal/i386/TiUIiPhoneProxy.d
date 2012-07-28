@@ -28,6 +28,7 @@ dependencies: \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiStylesheet.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/KrollBridge.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiModule.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/XHRBridge.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiRootViewController.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiRootController.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiWindowProxy.h \
@@ -43,5 +44,21 @@ dependencies: \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiTabGroup.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIWindow.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiViewController.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneAnimationStyleProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneStatusBarProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneRowAnimationStyleProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneSystemButtonStyleProxy.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneSystemButtonProxy.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneActivityIndicatorStyleProxy.h
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneProgressBarStyleProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneActivityIndicatorStyleProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneSystemIconProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneScrollIndicatorStyleProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneTableViewStyleProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneTableViewSeparatorStyleProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneTableViewScrollPositionProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneTableViewCellSelectionStyleProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPhoneNavigationGroupProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPadProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPadPopoverProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPadSplitWindowProxy.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIiPadDocumentViewerProxy.h
