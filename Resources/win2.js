@@ -44,17 +44,6 @@ var activityIndicator = Ti.UI.createActivityIndicator({
 	width:'auto'
 });
 
-//	Timeout Alerts
-var lostSignal = Ti.UI.createAlertDialog({
-		title:'Connection Lost',
-		message:'Check to see that you have a phone signal or Wi-Fi connection.'
-});
-
-var lostServer = Ti.UI.createAlertDialog({
-		title:'Timed Out',
-		message:'There was an issue connecting to the server, please wait and try again.'
-});
-
 detail_win2.add(activityIndicator);
 activityIndicator.zIndex = 9;
 
@@ -188,17 +177,6 @@ rewindButton.addEventListener('click', function()
 var flexSpace = Titanium.UI.createButton({
 	systemButton:Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
 });
-
-//	Alerts
-var lostSignal = Ti.UI.createAlertDialog({
-		title:'Connection Lost',
-		message:'Check to see that you have a phone signal or Wi-Fi connection.'
-		});
-
-var lostServer = Ti.UI.createAlertDialog({
-		title:'Timed Out',
-		message:'There was an issue connecting to the server, please wait and try again.'
-		});
 
 //	Start by creating the Map with these current coordinates.
 var mapView = Titanium.Map.createView({
@@ -345,6 +323,11 @@ var region_changing = function reloadGPSAnnotations(){
 			activityIndicator.hide();
 			win2.remove(view);
 
+			var lostSignal = Ti.UI.createAlertDialog({
+			title:'Connection Lost',
+			message:'Check to see that you have a phone signal or Wi-Fi connection.'
+			});
+			
 			setTimeout(function(){
 				lostSignal.show();
 			},3000);
