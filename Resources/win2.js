@@ -111,29 +111,26 @@ var sound = Titanium.Media.createAudioPlayer({
 	allowBackground: true,
 	preload:true
 });
-
-	
-var positionLeft = 10;
 		
 var dateLabel = Titanium.UI.createLabel({
    text: title,
    color:'#ffffff',
    height: 'auto',
    width: 'auto',
-   font:{fontFamily:'Arial',fontSize:20,fontWeight:'bold'},
+   font:{fontFamily:'Arial',fontSize:'24%',fontWeight:'bold'},
    top: '5%',
-   left: positionLeft,
-   textAlign: 'TEXT_ALIGNMENT_LEFT'
+   left: 'auto',
+   textAlign: 'TEXT_ALIGNMENT_CENTER'
 });
     
 var clockLabel = Titanium.UI.createLabel({
    text: title,
    color:'#ffffff',
    height: 'auto',
-   font:{fontFamily:'Arial',fontSize:'25%',fontWeight:'bold'},
-   top: '17%',
-   left: positionLeft,
-   textAlign: 'TEXT_ALIGNMENT_LEFT'
+   font:{fontFamily:'Arial',fontSize:'28%',fontWeight:'bold'},
+   top: '18%',
+   left: 'auto',
+   textAlign: 'TEXT_ALIGNMENT_CENTER'
 });
 
 
