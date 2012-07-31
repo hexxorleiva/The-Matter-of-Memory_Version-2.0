@@ -27,15 +27,6 @@ win3.setTitleControl(titleLabel);
 //	was "http://thematterofmemory.com/thematterofmemory_scripts/uploadaudio.php"
 var posturl="http://thematterofmemory.com/masterAudioDirectory/S3_audio_upload.php";
 
-//Creation of a new Directory to store both GPS and audio files. Will check if directory exists.
-var newDir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'mydir');
-if (newDir.exists('mydir')){
-Titanium.API.info('Directory already exists');
-} else {
-newDir.createDirectory();
-Titanium.API.info('Path to newdir: ' + newDir.nativePath);
-};
-
 // Creating the modal window that will come up once the "Record" button is pressed
 var modal = Ti.UI.createWindow({
 	navBarHidden:false,
@@ -47,7 +38,6 @@ var modal = Ti.UI.createWindow({
 //	Recording Audio Global Identifiers
 //
 
-Titanium.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_PLAY_AND_RECORD;
 var recording = Ti.Media.createAudioRecorder();
 var file;
 var sound_01;
@@ -452,7 +442,6 @@ record.addEventListener('click', function(){
 		message:'No audio recording hardware is currently connected.'
 		}).show();
 	} else {
-		Ti.Media.AUDIO_SESSION_MODE_PLAY_AND_RECORD;
 	//In case someone is listening to a memory on the other tab group - let us stop that.
 	sound.stop();
 	// Once you've hit the record button, the modal window will come up with all of these options.	
@@ -520,7 +509,6 @@ playback.addEventListener('click', function(){
 			//There was something recorded, now we are playing it back.
 			//Making an instance in case someone recorded something. Then decided to go back and listen to a memory,
 			//and then try and listen to the very recording they just did? We will have to stop that sound from coming through.
-			Ti.Media.AUDIO_SESSION_MODE_PLAYBACK;
 			sound.stop();
 			sound_01 = Titanium.Media.createSound({url:newAudiofile});
 			sound_01.play();
