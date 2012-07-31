@@ -31,21 +31,6 @@ var titleLabel = Titanium.UI.createLabel({
 //	Setting the label and putting it to the top of the window.
 win2.setTitleControl(titleLabel);
 
-//	Activity Indicator
-var activityIndicator = Ti.UI.createActivityIndicator({
-	color: 'white',
-	font: {fontFamily:'Helvetica Neue', fontSize:20, fontWeight:'normal'},
-	message: 'Loading...',
-	style:Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN,
-	top:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
-	left:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
-	height:'auto',
-	width:'auto'
-});
-
-detail_win2.add(activityIndicator);
-activityIndicator.zIndex = 9;
-
 var view = Titanium.UI.createView({
 	backgroundColor:'black',
 	width: '100%',
@@ -97,61 +82,6 @@ var sound = Titanium.Media.createAudioPlayer({
 	preload:true
 });
 
-
-//the window adds the date.
-detail_win2.add(dateLabel);
-detail_win2.add(clockLabel);
-
-//
-//	BUTTONS FOR STREAMING
-//
-
-//
-//	PLAY
-//
-var playButton = Titanium.UI.createButton({
-	systemButton:Titanium.UI.iPhone.SystemButton.PLAY,
-	left:30,
-	enabled:true
-	});
-
-playButton.addEventListener('click', function()
-{
-	sound.start();
-});
-
-//
-//	PAUSE
-//
-
-var pauseButton = Titanium.UI.createButton({
-	systemButton:Titanium.UI.iPhone.SystemButton.PAUSE,
-	enabled:true
-});
-pauseButton.addEventListener('click', function()
-{
-	sound.pause();
-});
-
-
-//
-//	REWIND
-//
-var rewindButton = Titanium.UI.createButton({
-	systemButton:Titanium.UI.iPhone.SystemButton.REWIND,
-	left:50,
-	enabled:true
-});
-
-rewindButton.addEventListener('click', function()
-{
-	sound.stop();
-	sound.start();
-});
-
-var flexSpace = Titanium.UI.createButton({
-	systemButton:Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
-});
 
 //	Start by creating the Map with these current coordinates.
 var mapView = Titanium.Map.createView({
