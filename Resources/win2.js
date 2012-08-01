@@ -369,10 +369,10 @@ mapView.addEventListener('click', function(e) {
 			font: {fontFamily:'Helvetica Neue', fontSize:20, fontWeight:'normal'},
 			message: 'Loading...',
 			style:Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN,
-			//top:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
-			//left:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
-			//height:'auto',
-			//width:'auto'
+			top:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
+			left:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
+			height:'auto',
+			width:'auto'
 			});
 			
 		//	I believe this is to indicate how far in front the activityIndicator is against all the other elements in the app. This puts it 9 levels
@@ -509,6 +509,7 @@ mapView.addEventListener('click', function(e) {
 		//	A 'trick' that may or may not cause memory leaks, but it will help in determining if the screen is still loading
 		//	in order to be able to remove it if need be.
 		detail_win2.add(activityIndicator);
+		activityIndicator.show();
 		detail_win2.Activity_Indicator = activityIndicator;
 		
 		//	The sound will begin to stream now.

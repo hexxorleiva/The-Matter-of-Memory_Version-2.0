@@ -25,7 +25,7 @@ var win1 = Titanium.UI.createWindow({
     barColor: '#999999'
 });
 var tab1 = Titanium.UI.createTab({  
-    icon:'KS_nav_views.png',
+    icon:'introduction_thumbnail.png',
     title:'Introduction',
     window:win1
 });
@@ -51,7 +51,7 @@ var win3 = Titanium.UI.createWindow({
 });
 
 var tab3 = Titanium.UI.createTab({  
-    icon:'KS_nav_ui.png',
+    icon:'microphone_thumbnail.png',
     title:'Record',
     window:win3
 });
