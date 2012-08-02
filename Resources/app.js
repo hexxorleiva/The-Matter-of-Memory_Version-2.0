@@ -1,7 +1,7 @@
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
 Titanium.UI.setBackgroundColor('#000');
 
-Titanium.Media.audioSessionMode = Titanium.Media.AUDIO_SPEAKER;
+Titanium.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_PLAY_AND_RECORD;
 
 //	Creation of a new Directory to store both GPS and audio files. Will check if directory exists.
 var newDir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'mydir');
@@ -26,7 +26,7 @@ var win1 = Titanium.UI.createWindow({
 });
 var tab1 = Titanium.UI.createTab({  
     icon:'introduction_thumbnail.png',
-    title:'Introduction',
+    title:'Information',
     window:win1
 });
 Ti.include('win1.js');

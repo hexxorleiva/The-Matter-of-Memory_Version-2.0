@@ -12,11 +12,6 @@ win2.backgroundColor = 'black';
 //	The Ti.include() includes these functions currentLocation() and function movingLocation() which calls the GPS locations of the user;
 Ti.include('currentLocation.js');
 
-var currentLatitude;
-var currentLongitude;
-
-
-
 //	Top label for the very top of the app that will show where the user is located throughout the app.
 var titleLabel = Titanium.UI.createLabel({
     color:'#333333',
@@ -31,40 +26,19 @@ var titleLabel = Titanium.UI.createLabel({
 //	Setting the label and putting it to the top of the window.
 win2.setTitleControl(titleLabel);
 
-var view = Titanium.UI.createView({
-	backgroundColor:'black',
-	width: '100%',
-	height: '100%',
-	opacity: 0.9,
-	visible: false,
-	iseeyou: false
-});
-
 //
 //	Globally Declared Variables
 //
 
 //	Variables that are needed to accept the incoming JSON data and create arrays needed to make map annotations
-var recorded = [];
-var plotPoints;
-var plotPointsFarther; //
-var updateAnnotations;
-var uploadGPS = '';
-var annotations = [];
-var myLabels = [];
-var title;
-var data = [];
+var currentLatitude;
+var currentLongitude;
 var easyClock = [];
 var audioURL = [];
 var miniMapLatitude = [];
 var miniMapLongitude = [];
-//var streamPlayerurl = 'http://thematterofmemory.com/S3_scripts/';
 
-//The streamPlayerURL has been taken out in order to make way to the Amazon S3 URLs that will be provided back from the response from the database that contains those locations.
-
-var url = "http://thematterofmemory.com";
-
-// Button so user manually refreshes the map for memory locations
+// Button to allow the user to manually refresh the map for memory locations
 
 //	Reload Button
 
@@ -130,6 +104,7 @@ function gpsCallback(_coords){
 
 //	This function will run though the 'annotations' array() and remove them from the mapView. Then will set them to an empty array.
 function removeAnnotations(){
+	var annotations = [];
     for (i=annotations.length-1;i>=0;i--) {
         mapView.removeAnnotation(annotations[i]);
     }
@@ -157,8 +132,8 @@ function gpsAnnotations(_coords){
 	xhr.onerror = function(e){
 		//	Adding an alert to tell the user that there was an error trying to get the annotations from their current position that recently moved.
 		var lostSignal = Ti.UI.createAlertDialog({
-		title:'Unable to update map',
-		message:'Check to see that you have a phone signal or Wi-Fi connection.'
+			title:'Unable to update map',
+			message:'Check to see that you have a phone signal or Wi-Fi connection.'
 		});
 		//	The alert will stay up for about 3 seconds and then go away.
 		setTimeout(function(){
@@ -173,22 +148,23 @@ function gpsAnnotations(_coords){
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	xhr.onload = function(){
 	Titanium.API.info('From win2.js & The Matter of Memory.com: ' + this.responseText);
+	var annotations = [];
 	var incomingData = JSON.parse(this.responseText);
 	for (var i = 0; i < incomingData.length; i++){
-	recorded = incomingData[i];
-		plotPoints = Titanium.Map.createAnnotation({
-		latitude: recorded.Latitude,
-		longitude: recorded.Longitude,
-		miniMapLatitude: recorded.Latitude,
-		miniMapLongitude: recorded.Longitude,
-		title: 'Memory',
-		subtitle: 'Click to listen',
-		date: recorded.easytime,
-		easyClock: recorded.easyclock,
-		audioURL: recorded.AudioURL,
-		rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE,
-		animate:true
-		});
+	var recorded = incomingData[i];
+		var plotPoints = Titanium.Map.createAnnotation({
+			latitude: recorded.Latitude,
+			longitude: recorded.Longitude,
+			miniMapLatitude: recorded.Latitude,
+			miniMapLongitude: recorded.Longitude,
+			title: 'Memory',
+			subtitle: 'Click to listen',
+			date: recorded.easytime,
+			easyClock: recorded.easyclock,
+			audioURL: recorded.AudioURL,
+			rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE,
+			animate:true
+			});
 	
 		plotPoints.pincolor = Titanium.Map.ANNOTATION_GREEN;
 
@@ -200,7 +176,6 @@ function gpsAnnotations(_coords){
 	}; // end of xhr.onload()
 
 	xhr.send();
-
 };
 
 
@@ -214,7 +189,7 @@ var region_changing = function reloadGPSAnnotations(){
 		backgroundColor:'black',
 		width: '100%',
 		height: '100%',
-		opacity: 0.9
+		opacity: 0.6
 		});
 	win2.add(view);
 
@@ -253,8 +228,8 @@ var region_changing = function reloadGPSAnnotations(){
 	xhr.onerror = function()
 		{
 			//	Removing the activityIndicator from view, and then also hiding it.
-			win2.remove(activityIndicator);
 			activityIndicator.hide();
+			win2.remove(activityIndicator);
 			
 			//	Removing the view that is blocking the map.
 			win2.remove(view);
@@ -289,22 +264,23 @@ var region_changing = function reloadGPSAnnotations(){
 		
 		//	incomingData is now a set-up variable that will absorb the response from the server which was in JSON format, and then parse it
 		//	to have the array labelled and added to the annotation properties.
+		var annotations = [];
 		var incomingData = JSON.parse(this.responseText);
 		for (var i = 0; i < incomingData.length; i++){
-			recorded = incomingData[i];
-			plotPoints = Titanium.Map.createAnnotation({
-			latitude: recorded.Latitude,
-			longitude: recorded.Longitude,
-			miniMapLatitude: recorded.Latitude,
-			miniMapLongitude: recorded.Longitude,
-			title: 'Memory',
-			subtitle: 'Click to listen',
-			date: recorded.easytime,
-			easyClock: recorded.easyclock,
-			audioURL: recorded.AudioURL,
-			rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE,
-			animate:true
-			});
+			var recorded = incomingData[i];
+			var plotPoints = Titanium.Map.createAnnotation({
+				latitude: recorded.Latitude,
+				longitude: recorded.Longitude,
+				miniMapLatitude: recorded.Latitude,
+				miniMapLongitude: recorded.Longitude,
+				title: 'Memory',
+				subtitle: 'Click to listen',
+				date: recorded.easytime,
+				easyClock: recorded.easyclock,
+				audioURL: recorded.AudioURL,
+				rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE,
+				animate:true
+				});
 		
 			plotPoints.pincolor = Titanium.Map.ANNOTATION_GREEN;
 	
@@ -348,7 +324,6 @@ mapView.addEventListener('click', function(e) {
    			width: 'auto',
    			font:{fontFamily:'Arial',fontSize:'20%',fontWeight:'normal'},
    			top: '5%',
-   			//left: 'auto',
    			textAlign: 'TEXT_ALIGNMENT_CENTER'
 			});
     
@@ -357,9 +332,8 @@ mapView.addEventListener('click', function(e) {
 	   		text: '',
    			color:'#ffffff',
    			height: 'auto',
-	   		font:{fontFamily:'Arial',fontSize:'28%',fontWeight:'bold'},
+	   		font:{fontFamily:'Arial',fontSize:'28%',fontWeight:'normal'},
    			top: '18%',
-   			//left: 'auto',
 	   		textAlign: 'TEXT_ALIGNMENT_CENTER'
 			});
 		
@@ -369,10 +343,6 @@ mapView.addEventListener('click', function(e) {
 			font: {fontFamily:'Helvetica Neue', fontSize:20, fontWeight:'normal'},
 			message: 'Loading...',
 			style:Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN,
-			top:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
-			left:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
-			height:'auto',
-			width:'auto'
 			});
 			
 		//	I believe this is to indicate how far in front the activityIndicator is against all the other elements in the app. This puts it 9 levels
@@ -523,7 +493,7 @@ mapView.addEventListener('click', function(e) {
 	sound.addEventListener('progress', function(e){
 		Ti.API.info('Time Player: ' + Math.round(e.progress) + ' milliseconds');
 		//	If the playing has progressed beyond 100 milliseconds, that means that audio is playing.
-		if (e.progress > 100){
+		if (e.progress > 10){
 			if (detail_win2.Loading_View) {
 				detail_win2.remove(loadingView);
 				detail_win2.Loading_View = null;
