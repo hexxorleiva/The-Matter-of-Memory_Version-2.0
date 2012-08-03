@@ -15,8 +15,4 @@ dependencies: \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/headers/TiCore/TiContextRefPrivate.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/KrollCallback.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/KrollObject.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiNetworkSocketTCPProxy.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiStreamProxy.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/Tibuffer.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiBlob.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/AsyncSocket.h
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiNetworkSocketTCPProxy.h

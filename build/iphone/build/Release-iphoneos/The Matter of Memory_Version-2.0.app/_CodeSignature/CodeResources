@@ -6,11 +6,11 @@
 	<dict>
 		<key>Default-Landscape.png</key>
 		<data>
-		H2SdbdudFr2gVugKDm+qEH6X/x4=
+		YIjRrPvS6QyGJHJNUV4ewy8Sq9Q=
 		</data>
 		<key>Default-Portrait.png</key>
 		<data>
-		6NR4e9L1Y8x6o+fs4jp32xidh+0=
+		l15BtgW/A1Favd+l2F15w+1YvkY=
 		</data>
 		<key>Default.png</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Default@2x.png</key>
 		<data>
-		oT7Ij6EzKREqjggUYQYTcK8MBzo=
+		a4DDPcyTgsmbk3sFgu+GW4iPVsI=
 		</data>
 		<key>KS_nav_ui.png</key>
 		<data>
@@ -36,6 +36,10 @@
 		<data>
 		cjL/+8PWuiFb179S2UOsvH/xiC4=
 		</data>
+		<key>compass_rose_thumbnail.png</key>
+		<data>
+		FqFDD49cSs7qIxH6Zhv9q2wl4CY=
+		</data>
 		<key>debugger.plist</key>
 		<data>
 		VqYyzyMX+yipQN08a+Gk7ofInzc=
@@ -43,6 +47,18 @@
 		<key>embedded.mobileprovision</key>
 		<data>
 		yEk+JEvPP7QZusWO7Mhg74y4gY8=
+		</data>
+		<key>introduction_thumbnail.png</key>
+		<data>
+		s5PiK2RcWVevyX260xfOPVDIIFA=
+		</data>
+		<key>map_icon-thumbnail.png</key>
+		<data>
+		M3g4rvyuNh0JAFSjf/xObRWhGIk=
+		</data>
+		<key>microphone_thumbnail.png</key>
+		<data>
+		BupkSylWN8KzoiyThFbbVI6Hc0U=
 		</data>
 		<key>modules/ui/images/badge.png</key>
 		<data>

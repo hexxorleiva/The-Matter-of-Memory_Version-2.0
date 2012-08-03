@@ -15,10 +15,6 @@ dependencies: \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/headers/TiCore/TiContextRefPrivate.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/KrollCallback.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/KrollObject.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiAppiOSBackgroundServiceProxy.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/KrollBridge.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/Bridge.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiModule.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUtils.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiColor.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiDimension.h \
@@ -28,8 +24,10 @@ dependencies: \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiBlob.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiApp.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiHost.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/Bridge.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiStylesheet.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/XHRBridge.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/KrollBridge.h \
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiModule.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiRootViewController.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiRootController.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiWindowProxy.h \
@@ -44,5 +42,4 @@ dependencies: \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiTab.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiTabGroup.h \
   /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiUIWindow.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiViewController.h \
-  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiAppiOSLocalNotificationProxy.h
+  /Users/chrono22031/Documents/Titanium\ Studio\ Workspace/The\ Matter\ of\ Memory_Version-2.0/build/iphone/Classes/TiViewController.h

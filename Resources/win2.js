@@ -11,7 +11,7 @@ win2.backgroundColor = 'black';
 
 //	The Ti.include() includes these functions currentLocation() and function movingLocation() which calls the GPS locations of the user;
 Ti.include('currentLocation.js');
-
+Titanium.Media.audioSessionMode = Ti.Media.AUDIO_SPEAKER;
 //	Top label for the very top of the app that will show where the user is located throughout the app.
 var titleLabel = Titanium.UI.createLabel({
     color:'#333333',
@@ -37,6 +37,7 @@ var easyClock = [];
 var audioURL = [];
 var miniMapLatitude = [];
 var miniMapLongitude = [];
+var annotations = [];
 
 // Button to allow the user to manually refresh the map for memory locations
 
@@ -102,22 +103,12 @@ function gpsCallback(_coords){
 }
 
 
-//	This function will run though the 'annotations' array() and remove them from the mapView. Then will set them to an empty array.
-function removeAnnotations(){
-	var annotations = [];
-    for (i=annotations.length-1;i>=0;i--) {
-        mapView.removeAnnotation(annotations[i]);
-    }
-    annotations = [];
-}
-
 //	gpsAnnotations() will whenever the user moves a certain amount of space (dictated in meters from the 'currentLocation.js'), this function will run
 //	and do the following; remove all the annotations that it may have listed before hand, get the current latitude & longitude coordinates, make a call
 //	to the server for what are the closest annotations from the user's location.
 function gpsAnnotations(_coords){
 	
 	//	Runs the above function which goes through all the annotations and removes them and makes the array empty.
-	removeAnnotations();
 
 	currentLatitude = _coords.latitude;
 	currentLongitude = _coords.longitude;
@@ -148,23 +139,22 @@ function gpsAnnotations(_coords){
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	xhr.onload = function(){
 	Titanium.API.info('From win2.js & The Matter of Memory.com: ' + this.responseText);
-	var annotations = [];
 	var incomingData = JSON.parse(this.responseText);
 	for (var i = 0; i < incomingData.length; i++){
 	var recorded = incomingData[i];
-		var plotPoints = Titanium.Map.createAnnotation({
-			latitude: recorded.Latitude,
-			longitude: recorded.Longitude,
-			miniMapLatitude: recorded.Latitude,
-			miniMapLongitude: recorded.Longitude,
-			title: 'Memory',
-			subtitle: 'Click to listen',
-			date: recorded.easytime,
-			easyClock: recorded.easyclock,
-			audioURL: recorded.AudioURL,
-			rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE,
-			animate:true
-			});
+	var plotPoints = Titanium.Map.createAnnotation({
+		latitude: recorded.Latitude,
+		longitude: recorded.Longitude,
+		miniMapLatitude: recorded.Latitude,
+		miniMapLongitude: recorded.Longitude,
+		title: 'Memory',
+		subtitle: 'Click to listen',
+		date: recorded.easytime,
+		easyClock: recorded.easyclock,
+		audioURL: recorded.AudioURL,
+		rightButton: Titanium.UI.iPhone.SystemButton.DISCLOSURE,
+		animate:true
+		});
 	
 		plotPoints.pincolor = Titanium.Map.ANNOTATION_GREEN;
 
@@ -183,6 +173,15 @@ var region_changing = function reloadGPSAnnotations(){
 	//	In this function, reloadGPSAnnotations, is going to be supplied within another function in order to be able to place it into the API for Titanium to engage
 	//	a removal of all annotations and call out to the server for a new drawing of annotations. There will be a view created to prevent movement of the map
 	//	and a loading symbol to indicate that the call is being made and awaiting a response.
+
+	function removeAnnotations(){
+		var annotations
+    for (i=annotations.length-1;i>=0;i--) {
+        mapView.removeAnnotations(annotations[i]);
+    }
+    	annotations = [];
+	}
+	removeAnnotations();
 
 	//	Create view that will block out the map.
 	var view = Titanium.UI.createView({
@@ -207,9 +206,6 @@ var region_changing = function reloadGPSAnnotations(){
 	//	Both of the methods below need to occur to add the activity indicator. Adding it to the current window and then placing a show() method.
 	win2.add(activityIndicator);
 	activityIndicator.show();
-	
-	//	Function referenced before to remove any previously set up annotations
-	removeAnnotations();
 	
 	//	Setting up the URL for the GET request where we will be supplying our GPS location in order to receive back the closest memories from our current location
 	//	in a radius.
@@ -264,11 +260,12 @@ var region_changing = function reloadGPSAnnotations(){
 		
 		//	incomingData is now a set-up variable that will absorb the response from the server which was in JSON format, and then parse it
 		//	to have the array labelled and added to the annotation properties.
-		var annotations = [];
+		//var annotations = [];
+
 		var incomingData = JSON.parse(this.responseText);
 		for (var i = 0; i < incomingData.length; i++){
 			var recorded = incomingData[i];
-			var plotPoints = Titanium.Map.createAnnotation({
+			plotPoints = Titanium.Map.createAnnotation({
 				latitude: recorded.Latitude,
 				longitude: recorded.Longitude,
 				miniMapLatitude: recorded.Latitude,
@@ -535,7 +532,7 @@ mapView.addEventListener('click', function(e) {
 		
 		Ti.API.info('detail_win2 has closed.');
 	});
-	
+
 }); // END mapView.addEventListener('click', function(e))
 
 //

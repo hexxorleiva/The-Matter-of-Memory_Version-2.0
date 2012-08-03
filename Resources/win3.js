@@ -11,6 +11,8 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 win3.backgroundColor = '#333';
 
+Titanium.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_PLAY_AND_RECORD;
+
 var titleLabel = Titanium.UI.createLabel({
     color:'#333333',
     height:18,
