@@ -175,10 +175,9 @@ var region_changing = function reloadGPSAnnotations(){
 	//	and a loading symbol to indicate that the call is being made and awaiting a response.
 
 	function removeAnnotations(){
-		var annotations
-    for (i=annotations.length-1;i>=0;i--) {
-        mapView.removeAnnotations(annotations[i]);
-    }
+    	for (i=annotations.length-1;i>=0;i--) {
+        	mapView.removeAnnotations(annotations[i]);
+		    }
     	annotations = [];
 	}
 	removeAnnotations();
@@ -198,10 +197,6 @@ var region_changing = function reloadGPSAnnotations(){
 		font: {fontFamily:'Helvetica Neue', fontSize:20, fontWeight:'normal'},
 		message: 'Loading...',
 		style:Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN,
-		top:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
-		left:'auto', /* needs to have a value other than 'auto', what value would that be then to center it? */
-		height:'auto',
-		width:'auto'
 		});
 	//	Both of the methods below need to occur to add the activity indicator. Adding it to the current window and then placing a show() method.
 	win2.add(activityIndicator);
