@@ -58,7 +58,7 @@ var view2 = Ti.UI.createView({
 });
 
 var l2 = Ti.UI.createLabel({
-	text:'The spaces we inhabit, and the histories that exist within these spaces can be examined through the audio recordings made by the public. The smart-phone is a unique tool that expands this art work beyond the limiting space of an installation',
+	text:'The spaces we inhabit, and the histories that exist within these spaces can be examined through the audio recordings made by the public. The smart-phone is a unique tool that expands this art work beyond the limiting space of an installation.',
 	color:'#999',
 	font:{fontSize:14,fontfamily:'Helvetica Neue'},
 	textAlign:'left',
@@ -69,7 +69,7 @@ var l2 = Ti.UI.createLabel({
 view2.add(l2);
 
 var l3 = Ti.UI.createLabel({
-	text:'The intersection of memory, our perceptions of memory, and the physical space of memory are things that I find the most fascinating. I invite you to leave behind a recording of a place of significance that you would want to share with others anonymously.',
+	text:'The intersection of memory and the physical space where these memories exist are things that I find the most fascinating. I invite you to leave behind a recording of a place of significance that you would want to share with others.',
 	color:'#999',
 	font:{fontSize:14,fontfamily:'Helvetica Neue'},
 	textAlign:'left',
