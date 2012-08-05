@@ -109,7 +109,6 @@ var display_lbl =  Titanium.UI.createLabel({
 	height:50,
 	width:240,
 	top:60,
-	//left:40,
 	color:'#fff',
 	borderRadius:10,
 	backgroundColor:'#333',
@@ -194,18 +193,10 @@ var progressBar = Titanium.UI.createProgressBar({
 	font:{fontSize:12, fontWeight:'bold'}
 });
 
-//	Timeout Indicators
-var firstAlertTO;
-var secondAlertTO;
-
 //
 //	Timeout - Functions and alerts
 //
 		
-var successDisplay = Ti.UI.createAlertDialog({
-		title:'Success', 
-		message:'Your audio has been uploaded to the server'
-});
 		
 var lostSignal = Ti.UI.createAlertDialog({
 		title:'Connection Lost',
@@ -543,9 +534,21 @@ playback.addEventListener('click', function(){
 //	Function to send to server
 //
 function sendtoserver() {
+	
+	var lostServer = Ti.UI.createAlertDialog({
+		title:'Timed Out',
+		message:'There was an issue connecting to the server, please wait and try again.'
+		});
+		
 	var xhr = Titanium.Network.createHTTPClient();
 //	Create view that will block out the other Table options while sending to the server.
 	try {
+		
+		var successDisplay = Ti.UI.createAlertDialog({
+		title:'Success', 
+		message:'Your audio has been uploaded to the server'
+		});
+		
 		var view = Titanium.UI.createView({
 			backgroundColor:'black',
 			width: 320,
@@ -553,14 +556,14 @@ function sendtoserver() {
 			opacity: 0.9
 			});
 		
-			win3.add(view);
+		win3.add(view);
 			
-			//	Activity Indicator
-			actInd.show();
+		//	Activity Indicator
+		actInd.show();
 
-			//	Progress Bar
-			win3.add(progressBar);
-			progressBar.show();
+		//	Progress Bar
+		win3.add(progressBar);
+		progressBar.show();
 			
 		xhr.onerror = function(e)
 			{
@@ -593,6 +596,7 @@ function sendtoserver() {
 			if (this.status == '404') {
 				//	If the upload results in a not found page
 				Ti.API.info('error: http status code ' + this.status);
+				
 				setTimeout(function(){
 					lostServer.show(); // was successDisplay.show
 					},500);
