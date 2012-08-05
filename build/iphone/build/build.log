@@ -5,7 +5,7 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 08/02/12 23:36
+Starting build at 08/04/12 20:26
 
 Build details:
 
@@ -23,7 +23,7 @@ Script arguments:
    com.hectorleiva.matterofmemory
    The Matter of Memory_Version-2.0
    universal
-   iphone
+   ipad
    
 
 Building from: /Users/chrono22031/Library/Application Support/Titanium/mobilesdk/osx/2.0.2.GA/iphone

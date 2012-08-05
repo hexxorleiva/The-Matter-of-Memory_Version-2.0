@@ -109,7 +109,7 @@ var display_lbl =  Titanium.UI.createLabel({
 	height:50,
 	width:240,
 	top:60,
-	left:40,
+	//left:40,
 	color:'#fff',
 	borderRadius:10,
 	backgroundColor:'#333',
