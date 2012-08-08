@@ -25,10 +25,6 @@ var titleLabel = Titanium.UI.createLabel({
 });
 win3.setTitleControl(titleLabel);
 
-//	To affect where the POST operation for the PHP page will be executed, change the URL here.
-//	was "http://thematterofmemory.com/thematterofmemory_scripts/uploadaudio.php"
-var posturl="http://thematterofmemory.com/masterAudioDirectory/S3_audio_upload.php";
-
 // Creating the modal window that will come up once the "Record" button is pressed
 var modal = Ti.UI.createWindow({
 	navBarHidden:false,
@@ -637,7 +633,11 @@ function sendtoserver() {
 				progressBar.value = e.progress;
 				Titanium.API.info('ONSENDSTREAM - PROGRESS: ' + e.progress);
 				};
-			
+		
+		//	To affect where the POST operation for the PHP page will be executed, change the URL here.
+		//	was "http://thematterofmemory.com/thematterofmemory_scripts/uploadaudio.php"
+		var posturl="http://thematterofmemory.com/masterAudioDirectory/S3_audio_upload.php";
+		
 		//	open the client
 		xhr.open('POST', posturl);
 		
