@@ -11,7 +11,7 @@ win2.backgroundColor = 'black';
 
 //	The Ti.include() includes these functions currentLocation() and function movingLocation() which calls the GPS locations of the user;
 Ti.include('currentLocation.js');
-Titanium.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_PLAYBACKSPEAKER;
+Titanium.Media.audioSessionMode = Ti.Media.AUDIO_SESSION_MODE_AMBIENT;
 //	Top label for the very top of the app that will show where the user is located throughout the app.
 var titleLabel = Titanium.UI.createLabel({
     color:'#333333',

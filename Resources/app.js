@@ -84,3 +84,15 @@ tabGroup.addEventListener('blur', function(e)
 	}
 	Titanium.API.info('tab blur - new index ' + e.index + ' old index ' + e.previousIndex);
 });
+
+Ti.App.addEventListener('pause', function(e) {
+    // app is paused during phone call, so pause the stream
+    sound.setPaused(true);
+    // you could also use streamer.pause()
+});
+
+Ti.App.addEventListener('resume', function(e) {
+    // app resumes when call ends, so un-pause the stream
+    sound.setPaused(false);
+    // or use streamer.start()
+});

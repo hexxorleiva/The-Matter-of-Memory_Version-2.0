@@ -102,12 +102,14 @@ var my_timer = new countDown(2,00,
 
 var display_lbl =  Titanium.UI.createLabel({
 	text:"2 : 00",
-	height:50,
-	width:240,
+	height:70,
+	width:200,
 	top:60,
 	color:'#fff',
 	borderRadius:10,
-	backgroundColor:'#333',
+	borderWidth: 3,
+	borderColor: '#222',
+	backgroundColor:'#111',
 	font:{
 		fontSize:60,
 		fontWeight:'bold'
@@ -393,7 +395,7 @@ win3.add(submitText);
 
 var timeRemaining = Titanium.UI.createLabel({
 	text: 'Time Remaining',
-	top:115,
+	top:130,
 	width:200,
 	textAlign:'center',
 	font:{fontSize:19,fontfamily:'Helvetica Neue',fontWeight:'normal'},
