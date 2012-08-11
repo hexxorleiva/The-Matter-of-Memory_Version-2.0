@@ -19,7 +19,7 @@
     <version>2.0</version>
     <publisher>Hector Leiva</publisher>
     <url>http://hectorleiva.com</url>
-    <description>not specified</description>
+    <description>Anyone with a mobile phone is allowed to record a moment within a location and have that be available to anyone else running this application.</description>
     <copyright>2012 by Hector Leiva</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>

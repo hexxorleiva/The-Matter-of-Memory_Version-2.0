@@ -17,7 +17,7 @@
 			<string>com.hectorleiva.matterofmemory</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>thematterofmemory_version-2_0</string>
+				<string>thematter</string>
 				
 			</array>
 		</dict>

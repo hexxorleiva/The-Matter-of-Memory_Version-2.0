@@ -540,16 +540,3 @@ sound.addEventListener('resume', function()
 });
 
 win2.add(mapView);
-//win2.setToolbar([flexSpace,searchButton,flexSpace]);
-
-Ti.App.addEventListener('pause', function(e) {
-    // app is paused during phone call, so pause the stream
-    sound.setPaused(true);
-    // you could also use streamer.pause()
-});
-
-Ti.App.addEventListener('resume', function(e) {
-    // app resumes when call ends, so un-pause the stream
-    sound.setPaused(false);
-    // or use streamer.start()
-});

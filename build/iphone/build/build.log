@@ -5,7 +5,7 @@ reporting an issue to help us understand your environment, build settings
 and aid in debugging. Please attach this log to any issue that you report.
 ================================================================================
 
-Starting build at 08/09/12 19:40
+Starting build at 08/11/12 11:27
 
 Build details:
 
@@ -21,7 +21,7 @@ Script arguments:
    5.0
    /Users/chrono22031/Documents/Titanium Studio Workspace/The Matter of Memory_Version-2.0
    com.hectorleiva.matterofmemory
-   The Matter of Memory_Version-2.0
+   The Matter
    universal
    iphone
    
@@ -77,4 +77,39 @@ Generated the following stylecode code:
 
 	</dict>
 </plist>
-Finishing build
+Starting Xcode compile with the following arguments:
+
+    xcodebuild
+    -target
+    The Matter-universal
+    -configuration
+    Debug
+    -sdk
+    iphonesimulator5.0
+    GCC_PREPROCESSOR_DEFINITIONS=__LOG__ID__=3f51ea7d-6fc4-4c17-9193-0e0263c5b894 DEPLOYTYPE=development TI_DEVELOPMENT=1 DEBUG=1 TI_VERSION=2.0.2.GA  
+    IPHONEOS_DEPLOYMENT_TARGET=4.0
+    TARGETED_DEVICE_FAMILY=1,2
+    VALID_ARCHS=armv6 armv7 i386
+
+app_id = com.hectorleiva.matterofmemory
+
+
+Build settings from command line:
+    GCC_PREPROCESSOR_DEFINITIONS = __LOG__ID__=3f51ea7d-6fc4-4c17-9193-0e0263c5b894 DEPLOYTYPE=development TI_DEVELOPMENT=1 DEBUG=1 TI_VERSION=2.0.2.GA  
+    IPHONEOS_DEPLOYMENT_TARGET = 4.0
+    SDKROOT = iphonesimulator5.0
+    TARGETED_DEVICE_FAMILY = 1,2
+    VALID_ARCHS = armv6 armv7 i386
+
+xcodebuild: error: The project 'The Matter of Memory_Version-2.0.xcodeproj' does not contain a target named 'The Matter-universal'.
+EXIT CODE WAS: 65
+
+Exception detected in script:
+Traceback (most recent call last):
+  File "/Users/chrono22031/Library/Application Support/Titanium/mobilesdk/osx/2.0.2.GA/iphone/builder.py", line 1318, in main
+    execute_xcode("iphonesimulator%s" % link_version,["GCC_PREPROCESSOR_DEFINITIONS=__LOG__ID__=%s DEPLOYTYPE=development TI_DEVELOPMENT=1 DEBUG=1 TI_VERSION=%s %s %s" % (log_id,sdk_version,debugstr,kroll_coverage)],False)
+  File "/Users/chrono22031/Library/Application Support/Titanium/mobilesdk/osx/2.0.2.GA/iphone/builder.py", line 1224, in execute_xcode
+    output = run.run(args,False,False,o)
+  File "/Users/chrono22031/Library/Application Support/Titanium/mobilesdk/osx/2.0.2.GA/iphone/run.py", line 41, in run
+    sys.exit(rc)
+SystemExit: 65
