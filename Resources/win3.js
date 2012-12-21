@@ -157,9 +157,6 @@ Titanium.Geolocation.distanceFilter = 10;
 var gps_recorded = Titanium.Filesystem.getFile(newDir.nativePath, "coordinates.JSON");
 //	Loading file into a variable
 var uploadGPS = gps_recorded.read();
-//Outputting Variable into Titanium GUI for debugging
-Titanium.API.info(uploadGPS);
-
 
 //	Activity Indicator
 var actInd = Titanium.UI.createActivityIndicator({ 
@@ -573,8 +570,7 @@ function sendtoserver() {
 			setTimeout(function(){
 				lostServer.hide();
 				},3000);
-			
-			Titanium.API.info('IN ERROR' + e.error);
+				
 			//Restorting everything back to normal after error.
 			//Taking out blocking view
 			win3.remove(view);
@@ -630,11 +626,9 @@ function sendtoserver() {
 						}
 			};
 
-		xhr.onsendstream = function(e)
-			{
-				progressBar.value = e.progress;
-				Titanium.API.info('ONSENDSTREAM - PROGRESS: ' + e.progress);
-				};
+		xhr.onsendstream = function(e) {
+			progressBar.value = e.progress;
+		};
 		
 		//	To affect where the POST operation for the PHP page will be executed, change the URL here.
 		//	was "http://thematterofmemory.com/thematterofmemory_scripts/uploadaudio.php"
@@ -646,7 +640,6 @@ function sendtoserver() {
 		xhr.send(postData);
 
 	} catch(e) {
-		Ti.API.info("In Error: " + e.error);
 		setTimeout(function(){
 			lostServer.show();
 			},1000);
@@ -654,7 +647,6 @@ function sendtoserver() {
 		setTimeout(function(){
 			lostServer.hide();
 			},3000);
-		Titanium.API.info(e.error);
 	}
 
 }; // end of Sendtoserver function
@@ -676,7 +668,7 @@ upload.addEventListener('click', function(e){
 			upload.enabled = false;
 			upload.color = "#333333";
 			Titanium.UI.createAlertDialog({title:'To Submit', message:'Make sure to stop recording and stop playback before submitting.'}).show();
-				} else if (file != null){
-				sendtoserver();
-				}
+		} else if (file != null){
+			sendtoserver();
+		}
 });

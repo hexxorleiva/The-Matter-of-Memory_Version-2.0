@@ -107,13 +107,11 @@ scrollView.addEventListener('scroll', function(e)
 {
     activeView = e.view;  // the object handle to the view that is about to become visible
 	i = e.currentPage;
-	Titanium.API.info("scroll called - current index " + i + ' active view ' + activeView);
 });
-scrollView.addEventListener('click', function(e)
-{
-	Ti.API.info('ScrollView received click event, source = ' + e.source);
+scrollView.addEventListener('click', function(e) {
+
 });
-scrollView.addEventListener('touchend', function(e)
-{
-	Ti.API.info('ScrollView received touchend event, source = ' + e.source);
+
+scrollView.addEventListener('touchend', function(e) {
+
 });

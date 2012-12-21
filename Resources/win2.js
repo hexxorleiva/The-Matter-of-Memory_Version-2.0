@@ -205,7 +205,6 @@ var region_changing = function reloadGPSAnnotations(){
 	//	Setting up the URL for the GET request where we will be supplying our GPS location in order to receive back the closest memories from our current location
 	//	in a radius.
 	var geturl="http://thematterofmemory.com/masterGPSCoordinatesDirectory/memorymappingcoordinates.php?latitude=" + currentLatitude + "&longitude=" + currentLongitude;
-	Titanium.API.info('Reloading the annotations, this is the current URL including current GPS coordinates: ' + geturl);
 	
 	//	Opening the request to the server.
 	var xhr = Titanium.Network.createHTTPClient();
@@ -235,9 +234,6 @@ var region_changing = function reloadGPSAnnotations(){
 			setTimeout(function(){
 				lostSignal.show();
 			},3000);
-
-		//	This is for us on the Titanium Development side, this will list explicitly what the error was, it will then return and stop any other processes.
-		Titanium.API.info('IN ERROR' + e.error);
 		return;
 		}
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -251,7 +247,6 @@ var region_changing = function reloadGPSAnnotations(){
 		activityIndicator.hide();
 		//	Removing the view that is blocking the map
 		win2.remove(view);
-		Titanium.API.info('Response from the Reload button: ' + this.responseText);
 		
 		//	incomingData is now a set-up variable that will absorb the response from the server which was in JSON format, and then parse it
 		//	to have the array labelled and added to the annotation properties.
@@ -534,9 +529,7 @@ mapView.addEventListener('click', function(e) {
 // SOUND EVENTS
 //
 
-sound.addEventListener('resume', function()
-{
-	Titanium.API.info('RESUME CALLED');
+sound.addEventListener('resume', function() {
 });
 
 win2.add(mapView);

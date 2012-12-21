@@ -3,12 +3,10 @@ Titanium.UI.setBackgroundColor('#000');
 
 //	Creation of a new Directory to store both GPS and audio files. Will check if directory exists.
 var newDir = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'mydir');
-if (newDir.exists('mydir')){
-Titanium.API.info('Directory already exists');
-} else {
-newDir.createDirectory();
-Titanium.API.info('Path to newdir: ' + newDir.nativePath);
-};
+	if (newDir.exists('mydir')){
+	} else {
+	newDir.createDirectory();
+	};
 
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
@@ -79,10 +77,8 @@ tabGroup.addEventListener('blur', function(e)
 			//Re-enabled the Submit Button
 			upload.enabled = true;
 			upload.color = "#fff";
-			Ti.API.info('Sound exists and is playing; it should now be stopped and returned to normal.');
 			//If someone has already hit the record button and is recording a memory.
 	}
-	Titanium.API.info('tab blur - new index ' + e.index + ' old index ' + e.previousIndex);
 });
 
 Ti.App.addEventListener('pause', function(e) {
