@@ -148,7 +148,7 @@ function gpsAnnotations(_coords){
 		miniMapLatitude: recorded.Latitude,
 		miniMapLongitude: recorded.Longitude,
 		title: 'Memory',
-		subtitle: 'Click to listen',
+		subtitle: 'Tap to listen',
 		date: recorded.easytime,
 		easyClock: recorded.easyclock,
 		audioURL: recorded.AudioURL,
