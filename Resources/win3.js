@@ -127,11 +127,11 @@ var display_lbl =  Titanium.UI.createLabel({
 // for high end quality, you'll want LINEAR PCM - however, that
 // will result in uncompressed audio and will be very large in size
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // In addition, for the "createAudioPlayer()" function to read any audio created through Titanium. It seems	//
 // that the audio needs to have ACC - format, and MP4 - fileformat. Otherwise it will NOT read correctly	//
-// and return "Parse Errors" within the player. This has been my experience.								//
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// and return "Parse Errors" within the player. This has been my experience.					//			//
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 recording.compression = Ti.Media.AUDIO_FORMAT_AAC; //Was Ti.Media.AUDIO_FORMAT_ULAW
 recording.format = Ti.Media.AUDIO_FILEFORMAT_MP4; //Was Ti.Media.AUDIO_FILEFORMAT_WAVE
